@@ -14,6 +14,7 @@ export default function AddEntry() {
   const [type, setType] = useState("income");
   const [title, setTitle] = useState("");
   const [value, setValue] = useState("");
+  const [catTitle, setCatTitle] = useState("Frelancing");
 
   return (
     <div className="border-b bg-gray-100 py-3">
@@ -30,10 +31,38 @@ export default function AddEntry() {
                 title: title,
                 value: parseFloat(value),
                 type: type,
+                catTitle: catTitle,
               },
             ]);
           }}
         >
+
+
+           {/* catagory add------------------------------------------- */}
+           <select
+            id="type"
+            name="type"
+            className="block w-40 text-slate-100 shrink-0 rounded-md border-0 px-3 py-1.5 bg-amber-600 text-white-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            value={catTitle}
+            onChange={(e) => {
+              setCatTitle(e.target.value);
+            }}
+          >
+            <option value="Frelancing">Frelancing</option>
+            <option value="Salary">Salary</option>
+            <option value="Tuition">Tuition</option>
+            <option value="Grocery">Grocery</option>
+            <option value="UtilityBil">UtilityBil</option>
+            <option value="Entertrainment">Entertrainment</option>
+          </select>
+
+
+
+
+
+
+
+
           <select
             id="type"
             name="type"
@@ -48,20 +77,7 @@ export default function AddEntry() {
           </select>
 
 
-
-          <select
-            id="type"
-            name="type"
-            className="block w-20 shrink-0 rounded-md border-0 px-3 py-1.5 bg-orange-700 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            value={type}
-            onChange={(e) => {
-              setType(e.target.value);
-            }}
-          >
-            <option value="income">+</option>
-            <option value="expense">-</option>
-            <option value="grocery">Grocery</option>
-          </select>
+         
 
 
 

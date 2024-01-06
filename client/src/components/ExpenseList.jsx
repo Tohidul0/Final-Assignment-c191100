@@ -47,7 +47,10 @@ function updateData(id,entries){
   
   return (
     <div>
+      <div className="flex gap-28">
       <h2 className="border-b pb-2 font-medium text-red-600">Expense</h2>
+      <h2 className="border-b pb-2 font-medium text-red-600">Catagory</h2>
+      </div>
 
       {expenseEntries.length === 0 && (
         <p className="py-2.5 text-gray-600">There are no expenses.</p>
@@ -59,6 +62,8 @@ function updateData(id,entries){
             <li id={item.id} key={item.id} className="py-2.5">
               <div className="group flex justify-between gap-2 text-sm">
                 <span>{item.title}</span>
+
+                <span>{item.catTitle}</span>
                 <div>
                   <span className="text-red-600">
                     -{formatMoney(item.value)}
