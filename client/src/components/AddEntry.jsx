@@ -5,6 +5,27 @@ import { useEntries } from "../hooks/useEntries";
 
 
 export default function AddEntry() {
+// {
+  
+
+//   var raw = JSON.stringify({
+//       "title": "cliennnnnt",
+//       "type": "expense",
+//       "value": 600
+//    });
+
+//   var requestOptions = {
+//     method: 'POST',
+   
+//     body: raw,
+//     redirect: 'follow'
+//   };
+
+//   fetch("localhost:3000/entries", requestOptions)
+//     .then(response => response.text())
+//     .then(result => console.log(result))
+//     .catch(error => console.log('error', error));
+// }
 
  
 

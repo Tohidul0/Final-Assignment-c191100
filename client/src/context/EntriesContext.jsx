@@ -4,8 +4,26 @@ export const EntriesContext = createContext();
 export function EntriesProvider({ children }) {
   const [entries, setEntries] = useState(function () {
     const value = localStorage.getItem("entries");
-    if (!value) return [];
-    return JSON.parse(value);
+    console.log(JSON.parse(value))
+    // fetch("http://localhost:3000/entries")
+    // .then (res => res.json())
+    // .then( data => console.log(data))
+     let data;
+    async function fetchData() {
+      try {
+        const response = await fetch('http://localhost:3000/entries');
+         data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+    
+    fetchData();
+
+    
+    if (!data) return [];
+    return JSON.parse(data);
   });
 
   useEffect(() => {
