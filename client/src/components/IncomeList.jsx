@@ -62,7 +62,7 @@ export default function IncomeList() {
 
 
 
-                <span>{income.catTitle}</span>
+                <span>{income.cattitle}</span>
 
 
 

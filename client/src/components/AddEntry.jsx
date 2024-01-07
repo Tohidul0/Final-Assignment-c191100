@@ -35,7 +35,7 @@ export default function AddEntry() {
   const [type, setType] = useState("income");
   const [title, setTitle] = useState("");
   const [value, setValue] = useState("");
-  const [cattile, setCatTitle] = useState("Frelancing");
+  const [cattitle, setCattitle] = useState("Frelancing");
 
   return (
     <div className="border-b bg-gray-100 py-3">
@@ -67,11 +67,11 @@ export default function AddEntry() {
                "title": title,
                "value": m,
                "type": type,
-               "catTitle": cattile
+               "cattitle": cattitle
            })
             })
-             .then(response => response.json())
-              .then(response => console.log(JSON.stringify(response)))
+            .then(response => response.json())
+            .then(response => console.log(JSON.stringify(response)))
               
 
             
@@ -84,9 +84,9 @@ export default function AddEntry() {
             id="type"
             name="type"
             className="block w-40 text-slate-100 shrink-0 rounded-md border-0 px-3 py-1.5 bg-amber-600 text-white-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            value={cattile}
+            value={cattitle}
             onChange={(e) => {
-              setCatTitle(e.target.value);
+              setCattitle(e.target.value);
             }}
           >
             <option value="Frelancing">Frelancing</option>

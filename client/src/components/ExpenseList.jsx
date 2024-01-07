@@ -63,7 +63,7 @@ function updateData(id,entries){
               <div className="group flex justify-between gap-2 text-sm">
                 <span>{item.title}</span>
 
-                <span>{item.catTitle}</span>
+                <span>{item.cattitle}</span>
                 <div>
                   <span className="text-red-600">
                     -{formatMoney(item.value)}
