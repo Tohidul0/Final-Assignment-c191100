@@ -1,35 +1,44 @@
 import { createContext, useEffect, useState } from "react";
 export const EntriesContext = createContext();
 
+
 export function EntriesProvider({ children }) {
-  const [entries, setEntries] = useState(function () {
-    const value = localStorage.getItem("entries");
-    console.log(JSON.parse(value))
+  
+  const [entries, setEntries] = useState([]) 
+    var value;
+    //const value = localStorage.getItem("entries");
+   // console.log(JSON.parse(value))
     // fetch("http://localhost:3000/entries")
     // .then (res => res.json())
     // .then( data => console.log(data))
-     let data;
-    async function fetchData() {
+    useEffect(()=>{
+      
+    async function fetchData(){
       try {
         const response = await fetch('http://localhost:3000/entries');
-         data = await response.json();
-        console.log(data);
+         const data = await response.json();
+         if(!data) {
+          setEntries([])
+         }
+         else{
+          setEntries(data)
+          
+         }
+        // value = data.map( one => one);
+         
       } catch (error) {
         console.error('Error:', error);
       }
     }
     
-    fetchData();
-
     
-    if (!data) return [];
-    return JSON.parse(data);
-  });
+  fetchData();
 
-  useEffect(() => {
-    localStorage.setItem("entries", JSON.stringify(entries));
-  }, [entries]);
+    },[entries])
+ 
 
+
+   
   const totalIncome = entries
     .filter((entry) => entry.type === "income")
     .reduce((prev, entry) => prev + entry.value, 0);

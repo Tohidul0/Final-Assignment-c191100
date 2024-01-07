@@ -12,10 +12,13 @@ router.get("/", async function (req, res) {
 
 router.post("/", async function (req, res) {
     // read data from client
-    const { title, value, type } = req.body;
+    const { title, value, type , cattile} = req.body;
 
     const errors1 = [];
     if (title.length < 5) {
+        errors1.push("Title is too short");
+    }
+    if (cattile.length < 5) {
         errors1.push("Title is too short");
     }
     if (value < 0) {
@@ -34,8 +37,8 @@ router.post("/", async function (req, res) {
 
     // save data to database
     const result = await db.query(
-        `INSERT INTO entries (title, value, type) VALUES ($1, $2, $3) RETURNING *;`,
-        [title, value, type]
+        `INSERT INTO entries (title, value, type, catTitle) VALUES ($1, $2, $3, $4) RETURNING *;`,
+        [title, value, type,catTitle]
     );
 
     // send the new entry as response
